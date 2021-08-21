@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
+using PriorityTasks.Models;
 
 namespace PriorityTasks.Data
 {
@@ -21,9 +21,13 @@ namespace PriorityTasks.Data
         /// </summary>
         public DbSet<Task> Tasks { get; set; }
 
+        /// <summary>
+        /// Create tables for models.
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Task>().ToTable("Task");
+            modelBuilder.Entity<Task>().ToTable("Tasks");
         }
     }
 }
