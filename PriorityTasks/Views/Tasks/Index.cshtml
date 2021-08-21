@@ -28,55 +28,53 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Due)
-            </td>
-            <td style="white-space: nowrap;">
-                @{ 
-                    switch (item.Status)
-                    {
-                        case Status.NotStarted:
-                            <span>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Due)
+                </td>
+                <td style="white-space: nowrap;">
+                    @{
+                        switch (item.Status)
+                        {
+                            case Status.InProgress:
+                                <span class="text-warning">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </span>
+                                break;
+                            case Status.InReview:
+                                <span class="text-warning">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </span>
+                                break;
+                            case Status.Completed:
+                                <span class="text-success">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </span>
+                                break;
+                            case Status.Cancelled:
+                                <span class="text-danger">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </span>
+                                break;
+                            default:
                                 @Html.DisplayFor(modelItem => item.Status)
-                            </span>
-                            break;
-                        case Status.InProgress:
-                            <span class="text-warning">
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </span>
-                            break;
-                        case Status.InReview:
-                            <span class="text-warning">
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </span>
-                            break;
-                        case Status.Completed:
-                            <span class="text-success">
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </span>
-                            break;
-                        case Status.Cancelled:
-                            <span class="text-danger">
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </span>
-                            break;
+                                break;
+                        }
                     }
-                }
-            </td>
-            <td style="white-space: nowrap;">
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+                </td>
+                <td style="white-space: nowrap;">
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

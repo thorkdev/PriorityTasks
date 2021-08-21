@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -28,14 +29,14 @@ namespace PriorityTasks.Models
         InReview,
 
         /// <summary>
-        /// The task has been completed.
-        /// </summary>
-        Completed,
-
-        /// <summary>
         /// The task has been cancelled.
         /// </summary>
-        Cancelled
+        Cancelled,
+
+        /// <summary>
+        /// The task has been completed.
+        /// </summary>
+        Completed
     }
 
     /// <summary>

@@ -31,7 +31,13 @@ namespace PriorityTasks.Controllers
         /// <returns>List view of tasks.</returns>
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Tasks.ToListAsync());
+            var tasks = await _context.Tasks.ToListAsync();
+
+            // sort tasks by due date so closer dates are at the top, 
+            // and by status so completed tasks are at the bottom
+            var sorted = tasks.OrderBy(t => t.Due).OrderBy(t => t.Status).ToList();
+
+            return View(sorted);
         }
 
         /// <summary>
